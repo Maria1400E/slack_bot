@@ -1,6 +1,6 @@
-import { buffer } from 'micro';
-import { WebClient } from '@slack/web-api';
-import { google } from 'googleapis';
+const { buffer } = require('micro');
+const { WebClient } = require('@slack/web-api');
+const { google } = require('googleapis');
 
 const slack = new WebClient(process.env.SLACK_BOT_TOKEN);
 
@@ -15,13 +15,9 @@ const HORA_INICIO = 18; // 6 PM
 const HORA_FIN = 21;    // 9 PM
 const ZONA_HORARIA = 'America/Bogota';
 
-export const config = {
-  api: { bodyParser: false },
-};
-
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   if (req.method !== 'POST') {
-    res.status(405).send('Method Not Allowed');
+    res.status(200).send('Hello from Slack endpoint!');
     return;
   }
 
@@ -51,7 +47,7 @@ export default async function handler(req, res) {
     console.error('Error general:', error);
     res.status(500).send('Internal Server Error');
   }
-}
+};
 
 async function handleMessage(event) {
   // Hora actual en Bogotá
