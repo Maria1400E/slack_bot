@@ -12,11 +12,10 @@ export default async function handler(req, res) {
     try {
       const body = JSON.parse(rawBody);
       if (body.type === 'url_verification') {
-        // Slack espera SOLO el challenge como texto plano
-        res.status(200).send(body.challenge);
+        res.status(200).send(body.challenge); // SOLO el challenge, como texto plano
         return;
       }
-      // Aquí tu lógica de eventos normales...
+      // ...aquí tu lógica para otros eventos
       res.status(200).end();
     } catch (err) {
       res.status(400).send('Bad request');
