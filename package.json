@@ -1,17 +1,19 @@
 {
-  "name": "bot_slack",
+  "name": "slack-support-bot",
   "version": "1.0.0",
+  "description": "Bot de soporte para Slack que registra tickets en Google Sheets",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "@slack/web-api": "^7.0.0",
+    "@slack/bolt": "^3.12.2",
+    "dotenv": "^16.0.3",
     "googleapis": "^105.0.0",
-    "micro": "^9.3.4"
+    "moment-timezone": "^0.5.40"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
